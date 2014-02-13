@@ -1,4 +1,4 @@
-@timevault = angular.module('timevault', [])
+@timevault = angular.module('timevault', ['ngRoute'])
 
 # This routing directive tells Angular about the default
 # route for our application. The term "otherwise" here
