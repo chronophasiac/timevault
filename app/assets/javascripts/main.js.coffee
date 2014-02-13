@@ -6,6 +6,10 @@
 # sense as we add more routes to our application.
 @timevault.config(['$routeProvider', ($routeProvider) ->
   $routeProvider.
+    when('/intervals', {
+      templateUrl: '../templates/intervals/index.html',
+      controller: 'IntervalIndexCtrl'
+    }).
     otherwise({
       templateUrl: '../templates/home.html',
       controller: 'HomeCtrl'
