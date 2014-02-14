@@ -1,5 +1,5 @@
-@timevault.controller 'RestaurantShowCtrl', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
-  $http.get("/api/intervals/#{$routeParams.id}.json").success((data) ->
-    $scope.interval = data
-  )
+@timevault.controller 'RestaurantShowCtrl', ['$scope', '$http', '$routeParams', 'Interval', ($scope, $http, $routeParams, Interval) ->
+  $scope.init = ->
+    @intervalsService = new Interval
+    $scope.interval = @intervalsService.find $routeParams.id
 ]

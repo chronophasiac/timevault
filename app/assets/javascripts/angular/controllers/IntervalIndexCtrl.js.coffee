@@ -1,8 +1,7 @@
-@timevault.controller 'IntervalIndexCtrl', ['$scope', '$location', '$http', ($scope, $location, $http) ->
-  $scope.intervals = []
-  $http.get('/api/intervals.json').success((data) ->
-    $scope.intervals = data
-  )
+@timevault.controller 'IntervalIndexCtrl', ['$scope', '$location', '$http', 'Interval', ($scope, $location, $http, Interval) ->
+  $scope.init = ->
+    @intervalsService = new Interval
+    $scope.intervals = @intervalsService.all()
 
   $scope.viewInterval = (id) ->
     $location.url "/intervals/#{id}"
