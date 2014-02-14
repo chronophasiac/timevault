@@ -1,4 +1,4 @@
-class IntervalsController < ApplicationController
+class API::IntervalsController < ApplicationController
   def index
     @intervals = Interval.all
   end
