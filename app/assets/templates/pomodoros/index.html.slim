@@ -1,5 +1,5 @@
 div(ng-init='init()')
-  a(href="/#") index
+  a(href="/") index
   ul(ng-repeat='pomodoro in pomodoros | orderBy: "start"')
     li
       a(ng-click='viewPomodoro(pomodoro.id)')
@@ -9,6 +9,6 @@ div(ng-init='init()')
       label(for='pomodoroStart') Start
       input#pomodoroStart(type='datetime-local' class='form-control' ng-model='pomodoroStart' data-non-blank)
     div.form-group
-      label(for='pomodoroEnd') Start
+      label(for='pomodoroEnd') End
       input#pomodoroEnd(type='datetime-local' class='form-control' ng-model='pomodoroEnd' data-non-blank)
     button.btn.btn-default(type='submit') Add
