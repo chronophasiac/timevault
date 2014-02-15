@@ -1,6 +1,13 @@
 <div ng-init="init()">
   <a href="/#">index</a>
-  <ul ng-repeat='pomodoro in pomodoros'>
-    <li><a ng-click='viewPomodoro(pomodoro.id)'>{{ pomodoro.start | date:dateFormat }} to {{ pomodoro.end | date:dateFormat }}</a></li>
+  <ul ng-repeat='pomodoro in pomodoros | orderBy: "start"'>
+    <li><a ng-click='viewPomodoro(pomodoro.id)'>{{ pomodoro.start | date:'medium' }} to {{ pomodoro.end | date:'medium' }}</a></li>
   </ul>
+  <form id='new_task' ng-submit='addPomodoro()'>
+    <div class='input-group'>
+      <input type='datetime-local' ng-model='pomodoroStart' data-non-blank>
+      <input type='datetime-local' ng-model='pomodoroEnd' data-non-blank>
+      <button type='submit'>Add</button> 
+    </div>
+  </form>
 </div>

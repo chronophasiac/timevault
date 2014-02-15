@@ -2,7 +2,8 @@
   class Pomodoro
     constructor: ->
       @service = $resource('/api/pomodoros/:id',
-        {id: '@id'})
+        {id: '@id'},
+        {update: {method: 'PATCH'}})
 
     create: (attrs) ->
       new @service(pomodoro: attrs).$save (pomodoro) ->
