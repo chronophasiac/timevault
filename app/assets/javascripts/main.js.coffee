@@ -4,12 +4,12 @@
   $locationProvider.html5Mode(true)
 
   $routeProvider.
-    when('/intervals', {
-      templateUrl: '../templates/intervals/index.html',
-      controller: 'IntervalIndexCtrl'
+    when('/pomodoros', {
+      templateUrl: '../templates/pomodoros/index.html',
+      controller: 'PomodoroIndexCtrl'
     }).
-    when('/intervals/:id', {
-      templateUrl: '../templates/intervals/show.html',
+    when('/pomodoros/:id', {
+      templateUrl: '../templates/pomodoros/show.html',
       controller: 'RestaurantShowCtrl'
     }).
     otherwise({

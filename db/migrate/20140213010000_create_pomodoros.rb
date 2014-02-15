@@ -1,6 +1,6 @@
-class CreateIntervals < ActiveRecord::Migration
+class CreatePomodoros < ActiveRecord::Migration
   def change
-    create_table :intervals do |t|
+    create_table :pomodoros do |t|
       t.datetime :start
       t.datetime :end
 

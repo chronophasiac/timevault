@@ -1,0 +1,6 @@
+<div ng-init="init()">
+  <a href="/#">index</a>
+  <ul ng-repeat='pomodoro in pomodoros'>
+    <li><a ng-click='viewPomodoro(pomodoro.id)'>{{ pomodoro.start | date:dateFormat }} to {{ pomodoro.end | date:dateFormat }}</a></li>
+  </ul>
+</div>

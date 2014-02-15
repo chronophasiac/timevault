@@ -13,7 +13,7 @@ module.exports = function(config) {
     files: [
       'http://timevault.dev/assets/application.js',
       'spec/javascripts/*.{js,coffee}',
-      { pattern: 'app/assets/javascripts/*.{js,coffee}',
+      { pattern: 'app/assets/javascripts/**/*.{js,coffee}',
         watched: true,
         included: false,
         served: false }

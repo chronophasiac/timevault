@@ -2,11 +2,11 @@ Timevault::Application.routes.draw do
   root "static_pages#index"
 
   namespace :api, defaults: {format: :json} do
-    resources :intervals
+    resources :pomodoros
   end
 
-  get '/intervals' => 'static_pages#index'
-  get '/intervals/:id' => 'static_pages#index'
+  get '/pomodoros' => 'static_pages#index'
+  get '/pomodoros/:id' => 'static_pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

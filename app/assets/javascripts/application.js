@@ -14,6 +14,7 @@
 //= require jquery_ujs
 
 //= require angular
+//= require angular-mocks
 //= require angular-route
 //= require angular-resource
 

@@ -1,11 +1,11 @@
 describe "Timevault controllers", ->
   beforeEach module("timevault")
 
-  describe "IntervalIndexCtrl", ->
-    it "should set intervals to an empty array", inject(($controller) ->
+  describe "PomodoroIndexCtrl", ->
+    it "should set pomodoros to an empty array", inject(($controller) ->
       scope = {}
-      ctrl = $controller("IntervalIndexCtrl",
+      ctrl = $controller("PomodoroIndexCtrl",
         $scope: scope
       )
-      expect(scope.intervals.length).toBe 0
+      expect(scope.pomodoros.length).toBe 0
     )
