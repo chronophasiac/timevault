@@ -15,15 +15,15 @@
 
   $routeProvider.
     when('/pomodoros', {
-      templateUrl: '../templates/pomodoros/index.html',
+      templateUrl: '<%= asset_path("pomodoros/index.html") %>',
       controller: 'PomodoroIndexCtrl'
     }).
     when('/pomodoros/:id', {
-      templateUrl: '../templates/pomodoros/show.html',
+      templateUrl: '<%= asset_path("pomodoros/show.html") %>',
       controller: 'RestaurantShowCtrl'
     }).
     otherwise({
-      templateUrl: '../templates/home.html',
+      templateUrl: '<%= asset_path("home.html") %>',
       controller: 'HomeCtrl'
     })
 ])

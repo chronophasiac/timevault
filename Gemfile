@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'angularjs-rails'
 
+gem 'slim'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
 end

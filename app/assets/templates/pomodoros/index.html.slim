@@ -1,0 +1,11 @@
+div(ng-init='init()')
+  a(href="/#") index
+  ul(ng-repeat='pomodoro in pomodoros | orderBy: "start"')
+    li
+      a(ng-click='viewPomodoro(pomodoro.id)')
+        ' {{ pomodoro.start | date:'medium' }} to {{ pomodoro.end | date:'medium' }}
+  form(ng-submit='addPomodoro()')
+    div.input-group
+      input(type='datetime-local' ng-model='pomodoroStart' data-non-blank)
+      input(type='datetime-local' ng-model='pomodoroEnd' data-non-blank)
+      button(type='submit') Add

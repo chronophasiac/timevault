@@ -1,3 +1,3 @@
 @timevault.controller 'HomeCtrl', ['$scope', ($scope) ->
-  $scope.foo = 'bar'
+  $scope.appName = 'Timevault'
 ]
