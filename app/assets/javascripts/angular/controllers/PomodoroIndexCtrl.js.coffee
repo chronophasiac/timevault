@@ -1,10 +1,12 @@
-@timevault.controller 'PomodoroIndexCtrl', ['$scope', '$location', '$http', 'Pomodoro', ($scope, $location, $http, Pomodoro) ->
+@timevault.controller 'PomodoroIndexCtrl', ['$scope', '$location', '$http', '$filter', 'Pomodoro', ($scope, $location, $http, $filter, Pomodoro) ->
   $scope.pomodoros = []
 
   $scope.init = ->
     @pomodorosService = new Pomodoro
     $scope.pomodoros = @pomodorosService.all()
-    $scope.pomodoro = {start: '', end: ''}
+
+    now = $filter('date')(Date.now(), "yyyy-MM-dd'T'HH:mm:ss")
+    $scope.pomodoro = {start: now, end: now}
 
   $scope.viewPomodoro = (id) ->
     $location.url "/pomodoros/#{id}"
