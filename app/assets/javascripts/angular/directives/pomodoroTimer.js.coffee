@@ -1,11 +1,13 @@
-@timevault.directive 'pomodoroTimer', ['$interval', '$filter', 'startTime', ($interval, $filter, startTime) ->
+@timevault.directive 'pomodoroTimer', ['$interval', ($interval, startTime) ->
   link = (scope, element, attrs) ->
     updateTime = ->
-      element.text ((new Date()) - startTime)
+      pomodoroEnd = new Date(scope.pomodoro.projected_end)
+      remainingMinutes = (((pomodoroEnd - new Date()) / 1000) / 60)
+      element.text remainingMinutes
     element.on '$destroy', ->
       $interval.cancel(timeoutId)
     timeoutId = $interval ->
-      updatetime()
+      updateTime()
     , 1000
   return {
     link: link

@@ -1,3 +1,5 @@
 div(ng-init= 'init()')
-  ' {{ pomodoro.start | date:dateFormat }} to {{ pomodoro.end | date:dateFormat }}
-  span(pomodoro-timer='pomodoro.start')
+  ' {{ pomodoro.start | date:dateFormat }} to {{ (pomodoro.end | date:dateFormat) || (pomodoro.projected_end | date:dateFormat) }}
+  h5
+    | Minutes left: 
+    span(pomodoro-timer='pomodoro.start')
