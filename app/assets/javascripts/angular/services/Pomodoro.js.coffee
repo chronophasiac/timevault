@@ -15,3 +15,7 @@
 
     find: (id) ->
       @service.get id: id
+
+    minutesLeft: (pomodoro) ->
+      pomodoroEnd = new Date(pomodoro.projected_end)
+      ((pomodoroEnd - new Date()) / 1000) / 60
