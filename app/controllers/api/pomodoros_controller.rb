@@ -10,9 +10,9 @@ class API::PomodorosController < ApplicationController
   def create
     @pomodoro = Pomodoro.new(pomodoro_params)
     if @pomodoro.save
-      render json: @pomdoro, status: :created
+      render json: @pomodoro, status: :created
     else
-      render json: @customer.errors, status: :unprocessable_entity
+      render json: @pomodoro.errors, status: :unprocessable_entity
     end
   end
 

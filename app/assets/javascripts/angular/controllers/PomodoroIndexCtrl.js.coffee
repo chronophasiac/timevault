@@ -12,6 +12,6 @@
     $location.url "/pomodoros/#{id}"
 
   $scope.addPomodoro = ->
-    pomodoro = @pomodorosService.create(start: $scope.pomodoro.start, end: $scope.pomodoro.end)
+    pomodoro = @pomodorosService.create start: $scope.pomodoro.start, end: $scope.pomodoro.end
     $scope.pomodoros.unshift(pomodoro)
 ]
