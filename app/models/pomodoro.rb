@@ -1,4 +1,7 @@
 class Pomodoro < ActiveRecord::Base
+  validates :start, presence: true
+  validates :set_duration, presence: true
+
   def projected_end
     unless self.end.present?
       start + 25.minutes
@@ -11,7 +14,7 @@ class Pomodoro < ActiveRecord::Base
 
   def add_end
     unless self.update(end: DateTime.now)
-      # Something has gone wrong, just destroy the invalid pomodoro
+      # Something has gone seriously wrong, just destroy the invalid pomodoro
       self.destroy
     end
   end
