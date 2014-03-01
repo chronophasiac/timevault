@@ -10,7 +10,9 @@ class Pomodoro < ActiveRecord::Base
   end
 
   def add_end
-    self.end = ->{DateTime.now}.call
-    self.save
+    unless self.update(end: DateTime.now)
+      # Something has gone wrong, just destroy the invalid pomodoro
+      self.destroy
+    end
   end
 end
