@@ -6,12 +6,12 @@
     $scope.pomodoros = @pomodorosService.all()
 
     now = $filter('date')(Date.now(), "yyyy-MM-dd'T'HH:mm:ss")
-    $scope.pomodoro = {start: now, end: now}
+    $scope.pomodoro = {start: now, set_duration: 1500}
 
   $scope.viewPomodoro = (id) ->
     $location.url "/pomodoros/#{id}"
 
   $scope.addPomodoro = ->
-    pomodoro = @pomodorosService.create start: $scope.pomodoro.start, end: $scope.pomodoro.end
+    pomodoro = @pomodorosService.create start: $scope.pomodoro.start, set_duration: $scope.pomodoro.set_duration
     $scope.pomodoros.unshift(pomodoro)
 ]

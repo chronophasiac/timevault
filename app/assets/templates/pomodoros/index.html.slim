@@ -9,6 +9,6 @@ div(ng-init='init()')
       label(for='pomodoroStart') Start
       input#pomodoroStart(type='datetime-local' step='1' class='form-control' ng-model='pomodoro.start' data-non-blank)
     div.form-group
-      label(for='pomodoroEnd') End
-      input#pomodoroEnd(type='datetime-local' step='1' class='form-control' ng-model='pomodoro.end' data-non-blank)
+      label(for='pomodoroDuration') Duration
+      input#pomodoroDuration(type='number' step='1' class='form-control' ng-model='pomodoro.set_duration' data-non-blank)
     button.btn.btn-default(type='submit') Add

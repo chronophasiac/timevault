@@ -1,4 +1,7 @@
 Timevault::Application.routes.draw do
+  require 'sidekiq/web'
+
+  mount Sidekiq::Web => '/sidekiq'
   root "static_pages#index"
 
   namespace :api, defaults: {format: :json} do

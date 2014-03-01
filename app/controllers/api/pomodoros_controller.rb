@@ -10,6 +10,7 @@ class API::PomodorosController < ApplicationController
   def create
     @pomodoro = Pomodoro.new(pomodoro_params)
     if @pomodoro.save
+      @pomodoro.schedule_end
       render json: @pomodoro, status: :created
     else
       render json: @pomodoro.errors, status: :unprocessable_entity
@@ -19,6 +20,6 @@ class API::PomodorosController < ApplicationController
   private
 
   def pomodoro_params
-    params.require(:pomodoro).permit(:start, :end)
+    params.require(:pomodoro).permit(:start, :set_duration)
   end
 end
