@@ -17,5 +17,10 @@
       @service.get id: id
 
     minutesLeft: (pomodoro) ->
-      pomodoroEnd = new Date(pomodoro.projected_end)
-      ((pomodoroEnd - new Date()) / 1000) / 60
+      pomodoroStart = new Date(pomodoro.start)
+      pomodoroEnd = pomodoroStart.setSeconds(pomodoroStart.getSeconds() + pomodoro.set_duration)
+      minutes = ((pomodoroEnd - new Date()) / 1000) / 60
+      if minutes > 0
+        minutes
+      else
+        0

@@ -3,7 +3,7 @@ div(ng-init='init()')
   ul(ng-repeat='pomodoro in pomodoros | orderBy: "start"')
     li
       a(ng-click='viewPomodoro(pomodoro.id)')
-        ' {{ pomodoro.start | date:'medium' }} to {{ pomodoro.end | date:'medium' }}
+        ' {{ pomodoro.start | date:'medium' }} to {{ pomodoro.end | date:'medium' }} duration {{ pomodoro.set_duration }}
   form(role='form' ng-submit='addPomodoro()')
     div.form-group
       label(for='pomodoroStart') Start
