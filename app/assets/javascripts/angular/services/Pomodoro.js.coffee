@@ -19,8 +19,9 @@
     minutesLeft: (pomodoro) ->
       pomodoroStart = new Date(pomodoro.start)
       pomodoroEnd = pomodoroStart.setSeconds(pomodoroStart.getSeconds() + pomodoro.set_duration)
-      minutes = ((pomodoroEnd - new Date()) / 1000) / 60
-      if minutes > 0
-        minutes
+      now = new Date()
+      remaining = pomodoroEnd - now
+      if remaining > 0
+        (remaining / 1000) / 60
       else
         0
