@@ -10,6 +10,7 @@ head
   = csrf_meta_tags
 
 body
+  = render 'layouts/flash'
   div(ng-view='')
     == yield
   = javascript_include_tag "application"
