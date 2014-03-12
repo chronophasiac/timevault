@@ -1,4 +1,4 @@
-class API::PomodorosController < ApplicationController
+class API::PomodorosController < API::BaseController
   def index
     @pomodoros = Pomodoro.all
   end

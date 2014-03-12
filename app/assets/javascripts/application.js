@@ -20,6 +20,8 @@
 //= require angular-route
 //= require angular-resource
 
+//= require devise
+
 //= require main
 
 //= require_tree .

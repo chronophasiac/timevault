@@ -1,13 +1,17 @@
 Timevault::Application.routes.draw do
-  devise_for :users
   require 'sidekiq/web'
+
+  devise_for :users
+
+  namespace :api, defaults: {format: :json} do
+    devise_scope :user do
+      resource :session, only: [:create, :destroy]
+    end
+    resources :pomodoros
+  end
 
   mount Sidekiq::Web => '/sidekiq'
   root "static_pages#index"
-
-  namespace :api, defaults: {format: :json} do
-    resources :pomodoros
-  end
 
   get '/pomodoros' => 'static_pages#index'
   get '/pomodoros/:id' => 'static_pages#index'

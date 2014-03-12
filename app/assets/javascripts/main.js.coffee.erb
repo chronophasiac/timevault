@@ -1,4 +1,4 @@
-@timevault = angular.module('timevault', ['ngRoute', 'ngResource'])
+@timevault = angular.module('timevault', ['ngRoute', 'ngResource', 'Devise'])
 
 @timevault.config(['$routeProvider', '$locationProvider', '$httpProvider', ($routeProvider, $locationProvider, $httpProvider) ->
   # Enable HTML5 History API for modern browsers
@@ -13,16 +13,20 @@
   defaults.patch = defaults.patch || {}
   defaults.patch['Content-Type'] = 'application/json'
 
-  $routeProvider.
-    when('/pomodoros', {
+  $routeProvider
+    .when('/pomodoros', {
       templateUrl: '<%= asset_path("pomodoros/index.html") %>',
       controller: 'PomodoroIndexCtrl'
-    }).
-    when('/pomodoros/:id', {
+    })
+    .when('/pomodoros/:id', {
       templateUrl: '<%= asset_path("pomodoros/show.html") %>',
       controller: 'PomodoroShowCtrl'
-    }).
-    otherwise({
+    })
+    .when('/users/sign_in', {
+      templateUrl: '<%= asset_path("users/sign_in.html") %>',
+      controller: 'UserSignInCtrl'
+    })
+    .otherwise({
       templateUrl: '<%= asset_path("home.html") %>',
       controller: 'HomeCtrl'
     })
