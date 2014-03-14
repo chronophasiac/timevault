@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'angularjs-rails'
+gem 'ng-rails-csrf'
 
 gem 'slim'
 
@@ -37,6 +38,8 @@ gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'pry-rails'
+  gem 'pry-remote'
 end
 
 group :doc do

@@ -4,9 +4,6 @@ Timevault::Application.routes.draw do
   devise_for :users
 
   namespace :api, defaults: {format: :json} do
-    devise_scope :user do
-      resource :session, only: [:create, :destroy]
-    end
     resources :pomodoros
   end
 
