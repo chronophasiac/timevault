@@ -11,6 +11,7 @@ head
 
 body
   = render 'layouts/flash'
+  = render 'layouts/navigation'
   div(ng-view='')
     == yield
   = javascript_include_tag "application"

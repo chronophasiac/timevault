@@ -1,0 +1,29 @@
+nav.navbar.navbar-default(role="navigation")
+  div.container-fluid
+    div.navbar-header
+      button.navbar-toggle(type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to 'Timevault', root_path, class: 'navbar-brand'
+
+    div.collapse.navbar-collapse#bs-example-navbar-collapse-1
+      ul.nav.navbar-nav
+        li
+          a(href="/pomodoros") Pomodoros
+        li.dropdown
+          a.dropdown-toggle(href="#" data-toggle="dropdown")
+            | Dropdown
+            b.caret
+          ul.dropdown-menu
+            li
+              a(href="#") Action
+            li.divider
+            li
+              a(href="#") Another action
+      form.navbar-form.navbar-left(role="login")
+        div.form-group
+          input.form-control(type="email" placeholder="Email")
+          input.form-control(type="password" placeholder="Password")
+        button.btn.btn-default(type="submit") Login
