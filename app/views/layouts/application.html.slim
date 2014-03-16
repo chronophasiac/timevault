@@ -1,5 +1,5 @@
 doctype html
-html(ng-app='timevault')
+html
 head
   meta(charset='utf-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
@@ -9,9 +9,8 @@ head
   = stylesheet_link_tag "application", media: "all"
   = csrf_meta_tags
 
-body
-  = render 'layouts/flash'
+body(ng-app='timevault')
   = render 'layouts/navigation'
-  div(ng-view='')
-    == yield
+  = render 'layouts/flash'
+  == yield
   = javascript_include_tag "application"

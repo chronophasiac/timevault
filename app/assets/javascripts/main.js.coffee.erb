@@ -18,10 +18,6 @@
       templateUrl: '<%= asset_path("pomodoros/show.html") %>',
       controller: 'PomodoroShowCtrl'
     })
-    .when('/users/sign_in', {
-      templateUrl: '<%= asset_path("users/sign_in.html") %>',
-      controller: 'UserSignInCtrl'
-    })
     .otherwise({
       templateUrl: '<%= asset_path("home.html") %>',
       controller: 'HomeCtrl'

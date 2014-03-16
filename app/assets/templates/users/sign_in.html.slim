@@ -1,9 +1,0 @@
-div(ng-init='init()')
-  form(role='form' ng-submit='login()')
-    div.form-group
-      label(for='email') Email
-      input#email(type='email' class='form-control' ng-model='user.email' data-non-blank)
-    div.form-group
-      label(for='password') Password
-      input#password(type='password' class='form-control' ng-model='user.password' data-non-blank)
-    button.btn.btn-default(type='submit') Login

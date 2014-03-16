@@ -1,4 +1,4 @@
-nav.navbar.navbar-default(role="navigation")
+nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='init()')
   div.container-fluid
     div.navbar-header
       button.navbar-toggle(type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
@@ -22,8 +22,11 @@ nav.navbar.navbar-default(role="navigation")
             li.divider
             li
               a(href="#") Another action
-      form.navbar-form.navbar-left(role="login")
+      form.navbar-form.navbar-left(role="login" ng-hide='currentUser.email' ng-submit='login()')
         div.form-group
-          input.form-control(type="email" placeholder="Email")
-          input.form-control(type="password" placeholder="Password")
+          input.form-control(type="email" placeholder="Email" ng-model='user.email' data-non-blank)
+          input.form-control(type="password" placeholder="Password" ng-model='user.password' data-non-blank)
         button.btn.btn-default(type="submit") Login
+      p.navbar-text(ng-show='currentUser.email')
+        ' Signed in as {{currentUser.email}}
+      button.btn.btn-default.navbar-btn(ng-show='currentUser.email' ng-click='logout()') Sign Out
