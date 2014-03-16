@@ -19,7 +19,6 @@
 //= require angular-mocks
 //= require angular-route
 //= require angular-resource
-//= require ng-rails-csrf
 
 //= require devise
 

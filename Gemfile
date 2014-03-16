@@ -23,7 +23,6 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'angularjs-rails'
-gem 'ng-rails-csrf'
 
 gem 'slim'
 

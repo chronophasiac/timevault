@@ -1,4 +1,4 @@
-@timevault = angular.module('timevault', ['ngRoute', 'ngResource', 'ng-rails-csrf', 'Devise'])
+@timevault = angular.module('timevault', ['ngRoute', 'ngResource', 'Devise'])
 
 @timevault.config(['$routeProvider', '$locationProvider', '$httpProvider', 'AuthProvider', ($routeProvider, $locationProvider, $httpProvider, AuthProvider) ->
   # Enable HTML5 History API for modern browsers

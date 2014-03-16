@@ -22,11 +22,13 @@ nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='
             li.divider
             li
               a(href="#") Another action
-      form.navbar-form.navbar-left(role="login" ng-hide='currentUser.email' ng-submit='login()')
-        div.form-group
-          input.form-control(type="email" placeholder="Email" ng-model='user.email' data-non-blank)
-          input.form-control(type="password" placeholder="Password" ng-model='user.password' data-non-blank)
-        button.btn.btn-default(type="submit") Login
-      p.navbar-text(ng-show='currentUser.email')
-        ' Signed in as {{currentUser.email}}
-      button.btn.btn-default.navbar-btn(ng-show='currentUser.email' ng-click='logout()') Sign Out
+      .navbar-right(ng-cloak)
+        form.navbar-form.navbar-left(role="login" ng-hide='currentUser.email' ng-submit='login()')
+          div.form-group
+            input.form-control(type="email" placeholder="Email" ng-model='user.email' data-non-blank)
+            input.form-control(type="password" placeholder="Password" ng-model='user.password' data-non-blank)
+          button.btn.btn-default(type="submit") Login
+        div(ng-show='currentUser.email')
+          p.navbar-text
+            ' Signed in as {{currentUser.email}}
+          button.btn.btn-default.navbar-btn(ng-click='logout()') Sign Out
