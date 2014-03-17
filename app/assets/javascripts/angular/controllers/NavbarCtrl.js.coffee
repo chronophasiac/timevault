@@ -1,8 +1,11 @@
 @timevault.controller 'NavbarCtrl', ['$scope', 'Auth', ($scope, Auth) ->
   $scope.init = ->
     $scope.currentUuser = {}
-    Auth.currentUser().then (user) ->
-      $scope.currentUser = user
+    Auth.currentUser().then(
+      (user) ->
+        $scope.currentUser = user
+      (error) ->
+        console.log error)
 
   $scope.login = ->
     Auth.login($scope.user).then (user) ->

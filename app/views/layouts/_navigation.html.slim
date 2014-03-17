@@ -12,23 +12,23 @@ nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='
       ul.nav.navbar-nav
         li
           a(href="/pomodoros") Pomodoros
-        li.dropdown
+      ul.nav.navbar-nav.navbar-right(ng-cloak)
+        li.dropdown(ng-hide='currentUser.email')
           a.dropdown-toggle(href="#" data-toggle="dropdown")
-            | Dropdown
+            | Login
             b.caret
           ul.dropdown-menu
             li
-              a(href="#") Action
-            li.divider
+              form.navbar-form.navbar-left(role="login" ng-submit='login()')
+                div.form-group
+                  input.form-control(type="email" placeholder="Email" ng-model='user.email' data-non-blank)
+                  input.form-control(type="password" placeholder="Password" ng-model='user.password' data-non-blank)
+                li.divider
+                button.btn.btn-default(type="submit") Login
+        li.dropdown(ng-show='currentUser.email')
+          a.dropdown-toggle(href="#" data-toggle="dropdown")
+            ' {{currentUser.email}}
+            b.caret
+          ul.dropdown-menu
             li
-              a(href="#") Another action
-      .navbar-right(ng-cloak)
-        form.navbar-form.navbar-left(role="login" ng-hide='currentUser.email' ng-submit='login()')
-          div.form-group
-            input.form-control(type="email" placeholder="Email" ng-model='user.email' data-non-blank)
-            input.form-control(type="password" placeholder="Password" ng-model='user.password' data-non-blank)
-          button.btn.btn-default(type="submit") Login
-        div(ng-show='currentUser.email')
-          p.navbar-text
-            ' Signed in as {{currentUser.email}}
-          button.btn.btn-default.navbar-btn(ng-click='logout()') Sign Out
+              a(href='#' ng-click='logout()') Sign Out

@@ -1,3 +1,3 @@
-@timevault.controller 'HomeCtrl', ['$scope', 'Auth', ($scope, Auth) ->
+@timevault.controller 'HomeCtrl', ['$scope', ($scope) ->
   $scope.appName = 'Timevault'
 ]
