@@ -1,14 +1,14 @@
 class API::PomodorosController < API::BaseController
   def index
-    @pomodoros = Pomodoro.all
+    @pomodoros = current_user.pomodoros
   end
 
   def show
-    @pomodoro = Pomodoro.find(params[:id])
+    @pomodoro = current_user.pomodoros.find(params[:id])
   end
 
   def create
-    @pomodoro = Pomodoro.new(pomodoro_params)
+    @pomodoro = current_user.pomodoros.build(pomodoro_params)
     if @pomodoro.save
       @pomodoro.schedule_end
       render json: @pomodoro, status: :created

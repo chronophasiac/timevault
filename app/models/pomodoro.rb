@@ -1,6 +1,10 @@
 class Pomodoro < ActiveRecord::Base
+  belongs_to :user,
+             inverse_of: :pomodoros
+
   validates :start, presence: true
   validates :set_duration, presence: true
+  validates :user, presence: true
 
   def projected_end
     unless self.end.present?
@@ -30,7 +34,7 @@ class Pomodoro < ActiveRecord::Base
     client = Twilio::REST::Client.new account_sid, auth_token
     client.account.messages.create(
       from: '+16175003913',
-      to: '+16787612326',
+      to: user.phone_number,
       body: 'Pomodoro complete!'
     )
   end
