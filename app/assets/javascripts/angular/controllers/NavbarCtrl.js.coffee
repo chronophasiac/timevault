@@ -1,4 +1,4 @@
-@timevault.controller 'NavbarCtrl', ['$scope', 'Auth', ($scope, Auth) ->
+@timevault.controller 'NavbarCtrl', ['$scope', '$location', 'Auth', ($scope, $location, Auth) ->
   $scope.init = ->
     $scope.currentUuser = {}
     Auth.currentUser().then(
@@ -14,4 +14,5 @@
   $scope.logout = ->
     Auth.logout().then (oldUser) ->
       $scope.currentUser = {}
+      $location.path( '/' )
 ]

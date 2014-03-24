@@ -22,4 +22,9 @@
       templateUrl: '<%= asset_path("home.html") %>',
       controller: 'HomeCtrl'
     })
+]).run(['$rootScope', '$location', 'Auth', ($rootScope, $location, Auth) ->
+  $rootScope.$on('$locationChangeStart', (event, next, current) ->
+    if !Auth.isAuthenticated()
+      $location.path( '/' )
+    )
 ])
