@@ -1,5 +1,4 @@
 div(ng-init='init()')
-  a(href="/") index
   ul(ng-repeat='pomodoro in pomodoros | orderBy: "start"')
     li
       a(ng-click='viewPomodoro(pomodoro.id)')
