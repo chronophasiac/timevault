@@ -9,6 +9,7 @@ class API::PomodorosController < API::BaseController
 
   def create
     @pomodoro = current_user.pomodoros.build(pomodoro_params)
+    @pomodoro.start = DateTime.now
     if @pomodoro.save
       @pomodoro.schedule_end
       render json: @pomodoro, status: :created
@@ -20,6 +21,6 @@ class API::PomodorosController < API::BaseController
   private
 
   def pomodoro_params
-    params.require(:pomodoro).permit(:start, :set_duration)
+    params.require(:pomodoro).permit(:set_duration)
   end
 end
