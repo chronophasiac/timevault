@@ -3,14 +3,8 @@ class Pomodoro < ActiveRecord::Base
              inverse_of: :pomodoros
 
   validates :start, presence: true
-  validates :set_duration, presence: true
+  validates :set_duration, presence: true, numericality: { greater_than_or_equal_to: 10 }
   validates :user, presence: true
-
-  def projected_end
-    unless self.end.present?
-      start + 25.minutes
-    end
-  end
 
   def schedule_end
     PomodoroEndWorker.perform_in(set_duration.seconds.from_now, id)

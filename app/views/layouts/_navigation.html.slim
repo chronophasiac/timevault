@@ -1,5 +1,5 @@
 nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='init()')
-  div.container-fluid
+  div.container-fluid(ng-cloak)
     div.navbar-header
       button.navbar-toggle(type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
         span.sr-only Toggle navigation
@@ -12,19 +12,26 @@ nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='
       ul.nav.navbar-nav
         li(ng-show='userSignedIn()')
           a(href="/pomodoros") Pomodoros
-      ul.nav.navbar-nav.navbar-right(ng-cloak)
+      ul.nav.navbar-nav.navbar-right
         li.dropdown(ng-hide='userSignedIn()')
           a.dropdown-toggle(href="#" data-toggle="dropdown")
             | Login
             b.caret
           ul.dropdown-menu
             li
-              form.navbar-form.navbar-left(role="login" ng-submit='login()')
-                div.form-group
-                  input.form-control(type="email" placeholder="Email" ng-model='user.email' data-non-blank)
-                  input.form-control(type="password" placeholder="Password" ng-model='user.password' data-non-blank)
+              form.navbar-form.navbar-left(role='login' name='navLogin' ng-submit='login()' novalidate)
+                div.form-group.has-feedback(ng-class="{'has-error': navLogin.email.$invalid && navLogin.email.$dirty, 'has-success': navLogin.email.$valid && navLogin.email.$dirty, 'has-warning': navLogin.email.$pristine}")
+                  input.form-control(name='email' type="email" placeholder="Email" ng-model='user.email' required)
+                  span.glyphicon.glyphicon-warning-sign.form-control-feedback(ng-show='navLogin.email.$pristine')
+                  span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='navLogin.email.$valid && navLogin.email.$dirty')
+                  span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='navLogin.email.$invalid && navLogin.email.$dirty')
+                div.form-group.has-feedback(ng-class="{'has-error': navLogin.password.$invalid && navLogin.password.$dirty, 'has-success': navLogin.password.$valid && navLogin.password.$dirty, 'has-warning': navLogin.password.$pristine}")
+                  input.form-control(name='password' type="password" placeholder="Password" ng-model='user.password' ng-minlength='8' ng-maxlength='128' required)
+                  span.glyphicon.glyphicon-warning-sign.form-control-feedback(ng-show='navLogin.password.$pristine')
+                  span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='navLogin.password.$valid && navLogin.password.$dirty')
+                  span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='navLogin.password.$invalid && navLogin.password.$dirty')
                 li.divider
-                button.btn.btn-default(type="submit") Login
+                button.btn.btn-default(type="submit" ng-disabled='navLogin.$invalid') Login
         li.dropdown(ng-show='userSignedIn()')
           a.dropdown-toggle(href="#" data-toggle="dropdown")
             ' {{currentUser.email}}
