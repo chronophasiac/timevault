@@ -30,6 +30,7 @@
           $scope.newUser
 
     modalInstance.result.then (registeredUser) ->
-      $scope.user = registeredUser
-      $scope.login()
+      if registeredUser?
+        $scope.user = registeredUser
+        $scope.login()
 ]

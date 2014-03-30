@@ -15,7 +15,7 @@ nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='
       ul.nav.navbar-nav.navbar-right
         li.dropdown(ng-hide='userSignedIn()')
           a.dropdown-toggle(href="#" data-toggle="dropdown")
-            | Login
+            | Sign In
             b.caret
           ul.dropdown-menu
             li
@@ -31,7 +31,7 @@ nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='
                   span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='navLogin.password.$valid && navLogin.password.$dirty')
                   span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='navLogin.password.$invalid && navLogin.password.$dirty')
                 li.divider
-                button.btn.btn-default(type="submit" ng-disabled='navLogin.$invalid') Login
+                button.btn.btn-primary(type="submit" ng-disabled='navLogin.$invalid') Sign In
         li.dropdown(ng-show='userSignedIn()')
           a.dropdown-toggle(href="#" data-toggle="dropdown")
             ' {{currentUser.email}}

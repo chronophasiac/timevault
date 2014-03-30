@@ -14,4 +14,7 @@
       (response) ->
         console.log errorType, errorMessage for errorType, errorMessage of response.data.errors)
 
+  $scope.close = ->
+    $modalInstance.close()
+
 ]
