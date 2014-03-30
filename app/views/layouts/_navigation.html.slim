@@ -21,7 +21,7 @@ nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='
             li
               form.navbar-form.navbar-left(role='login' name='navLogin' ng-submit='login()' novalidate)
                 div.form-group.has-feedback(ng-class="{'has-error': navLogin.email.$invalid && navLogin.email.$dirty, 'has-success': navLogin.email.$valid && navLogin.email.$dirty, 'has-warning': navLogin.email.$pristine}")
-                  input.form-control(name='email' type="email" placeholder="Email" ng-model='user.email' required)
+                  input.form-control(name='email' type="email" placeholder="Email" autofocus='true' ng-model='user.email' required)
                   span.glyphicon.glyphicon-warning-sign.form-control-feedback(ng-show='navLogin.email.$pristine')
                   span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='navLogin.email.$valid && navLogin.email.$dirty')
                   span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='navLogin.email.$invalid && navLogin.email.$dirty')
@@ -39,3 +39,6 @@ nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='
           ul.dropdown-menu
             li
               a(href='#' ng-click='logout()') Sign Out
+
+        li
+          a(href='#' ng-hide='userSignedIn()' ng-click='open()') Sign Up

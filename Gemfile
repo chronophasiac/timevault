@@ -27,6 +27,7 @@ gem 'angularjs-rails'
 gem 'slim'
 
 gem 'bootstrap-sass'
+gem 'angular-ui-bootstrap-rails'
 
 gem 'sidekiq'
 gem 'sinatra'
