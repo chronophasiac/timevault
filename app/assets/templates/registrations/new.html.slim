@@ -23,10 +23,11 @@
       span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='newRegistration.password.$invalid && newRegistration.password.$dirty')
     div.form-group.has-feedback(ng-class="{'has-error': newRegistration.passwordConfirmation.$invalid && newRegistration.passwordConfirmation.$dirty, 'has-success': newRegistration.passwordConfirmation.$valid && newRegistration.passwordConfirmation.$dirty, 'has-warning': newRegistration.passwordConfirmation.$pristine}")
       label.control-label(for='registration-password-confirmation') Password Confirmation
-      input.form-control#registration-password-confirmation(name='passwordConfirmation' type="password" ng-model='user.passwordConfirmation' ng-minlength='8' ng-maxlength='128' required)
+      input.form-control#registration-password-confirmation(name='passwordConfirmation' type="password" ng-model='user.passwordConfirmation' ng-minlength='8' ng-maxlength='128' pw-check='registration-password' required)
       span.glyphicon.glyphicon-warning-sign.form-control-feedback(ng-show='newRegistration.passwordConfirmation.$pristine')
       span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='newRegistration.passwordConfirmation.$valid && newRegistration.passwordConfirmation.$dirty')
       span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='newRegistration.passwordConfirmation.$invalid && newRegistration.passwordConfirmation.$dirty')
+      span.help-block(ng-show='newRegistration.passwordConfirmation.$error.pwmatch && newRegistration.passwordConfirmation.$dirty') Must match password
     .modal-footer
       button.btn.btn-default(type="button" ng-click='close()') Close
       button.btn.btn-primary(type="submit" ng-disabled='newRegistration.$invalid') Sign Up
