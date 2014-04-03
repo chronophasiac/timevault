@@ -15,6 +15,7 @@
   $scope.login = ->
     Auth.login($scope.user).then (user) ->
       $scope.currentUser = user
+      $scope.user = {}
 
   $scope.logout = ->
     Auth.logout().then (oldUser) ->
