@@ -1,37 +1,18 @@
 nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='init()')
   div.container-fluid(ng-cloak)
     div.navbar-header
-      button.navbar-toggle(type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+      button.navbar-toggle(type="button" data-toggle="collapse" data-target="#navbar-collapse-1")
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
       = link_to 'Timevault', root_path, class: 'navbar-brand'
 
-    div.collapse.navbar-collapse#bs-example-navbar-collapse-1
-      ul.nav.navbar-nav
+    div.collapse.navbar-collapse#navbar-collapse-1
+      ul.nav.navbar-nav.navbar-left
         li(ng-show='userSignedIn()')
           a(href="/pomodoros") Pomodoros
       ul.nav.navbar-nav.navbar-right
-        li.dropdown(ng-hide='userSignedIn()')
-          a.dropdown-toggle(href="#" data-toggle="dropdown")
-            | Sign In
-            b.caret
-          ul.dropdown-menu
-            li
-              form.navbar-form.navbar-left(role='login' name='navLogin' ng-submit='login()' novalidate)
-                div.form-group.has-feedback(ng-class="{'has-error': navLogin.email.$invalid && navLogin.email.$dirty, 'has-success': navLogin.email.$valid && navLogin.email.$dirty, 'has-warning': navLogin.email.$pristine}")
-                  input.form-control(name='email' type="email" placeholder="Email" autofocus='true' ng-model='user.email' required)
-                  span.glyphicon.glyphicon-warning-sign.form-control-feedback(ng-show='navLogin.email.$pristine')
-                  span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='navLogin.email.$valid && navLogin.email.$dirty')
-                  span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='navLogin.email.$invalid && navLogin.email.$dirty')
-                div.form-group.has-feedback(ng-class="{'has-error': navLogin.password.$invalid && navLogin.password.$dirty, 'has-success': navLogin.password.$valid && navLogin.password.$dirty, 'has-warning': navLogin.password.$pristine}")
-                  input.form-control(name='password' type="password" placeholder="Password" ng-model='user.password' ng-minlength='8' ng-maxlength='128' required)
-                  span.glyphicon.glyphicon-warning-sign.form-control-feedback(ng-show='navLogin.password.$pristine')
-                  span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='navLogin.password.$valid && navLogin.password.$dirty')
-                  span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='navLogin.password.$invalid && navLogin.password.$dirty')
-                li.divider
-                button.btn.btn-primary(type="submit" ng-disabled='navLogin.$invalid') Sign In
         li.dropdown(ng-show='userSignedIn()')
           a.dropdown-toggle(href="#" data-toggle="dropdown")
             ' {{currentUser.email}}
@@ -42,3 +23,15 @@ nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl' ng-init='
 
         li
           a(href='#' ng-hide='userSignedIn()' ng-click='open()') Sign Up
+      form.navbar-form.navbar-right(role='login' name='navLogin' ng-hide='userSignedIn()' ng-submit='login()' novalidate)
+        div.form-group.has-feedback(ng-class="{'has-error': navLogin.email.$invalid && navLogin.email.$dirty, 'has-success': navLogin.email.$valid && navLogin.email.$dirty}")
+          label.control-label.sr-only(for='nav-email') Email
+          input.form-control#nav-email(name='email' type="email" placeholder="Email" autofocus='true' ng-model='user.email' required)
+          span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='navLogin.email.$valid && navLogin.email.$dirty')
+          span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='navLogin.email.$invalid && navLogin.email.$dirty')
+        div.form-group.has-feedback(ng-class="{'has-error': navLogin.password.$invalid && navLogin.password.$dirty, 'has-success': navLogin.password.$valid && navLogin.password.$dirty}")
+          label.control-label.sr-only(for='nav-password') Password
+          input.form-control#nav-password(name='password' type="password" placeholder="Password" ng-model='user.password' ng-minlength='8' ng-maxlength='128' required)
+          span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='navLogin.password.$valid && navLogin.password.$dirty')
+          span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='navLogin.password.$invalid && navLogin.password.$dirty')
+        button.btn.btn-default(type="submit" ng-disabled='navLogin.$invalid') Sign In
