@@ -1,5 +1,5 @@
-@timevault.controller 'RegistrationCtrl', ['$scope', '$location', 'Auth', '$modalInstance', 'user', ($scope, $location, Auth, $modalInstance, user) ->
-  $scope.user = user
+@timevault.controller 'RegistrationCtrl', ['$scope', '$location', 'Auth', '$modalInstance', ($scope, $location, Auth, $modalInstance) ->
+  $scope.user = {}
 
   $scope.register = ->
     credentials =

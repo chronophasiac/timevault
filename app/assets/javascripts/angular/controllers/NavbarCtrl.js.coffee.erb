@@ -1,7 +1,6 @@
 @timevault.controller 'NavbarCtrl', ['$scope', '$location', 'Auth', '$modal', ($scope, $location, Auth, $modal) ->
   $scope.init = ->
     $scope.currentUser = {}
-    $scope.newUser = {}
 
     Auth.currentUser().then(
       (user) ->
@@ -26,9 +25,6 @@
     modalInstance = $modal.open
       templateUrl: '<%= asset_path("registrations/new.html") %>',
       controller: 'RegistrationCtrl',
-      resolve:
-        user: ->
-          $scope.newUser
 
     modalInstance.result.then (registeredUser) ->
       if registeredUser?

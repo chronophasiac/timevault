@@ -27,6 +27,6 @@
       span.glyphicon.glyphicon-warning-sign.form-control-feedback(ng-show='newRegistration.passwordConfirmation.$pristine')
       span.glyphicon.glyphicon-ok.form-control-feedback(ng-show='newRegistration.passwordConfirmation.$valid && newRegistration.passwordConfirmation.$dirty')
       span.glyphicon.glyphicon-remove.form-control-feedback(ng-show='newRegistration.passwordConfirmation.$invalid && newRegistration.passwordConfirmation.$dirty')
-.modal-footer
-  button.btn.btn-default(type="button" ng-click='close()') Close
-  button.btn.btn-primary(type="submit" ng-disabled='newRegistration.$invalid') Sign Up
+    .modal-footer
+      button.btn.btn-default(type="button" ng-click='close()') Close
+      button.btn.btn-primary(type="submit" ng-disabled='newRegistration.$invalid') Sign Up
