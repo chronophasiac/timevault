@@ -1,7 +1,8 @@
-@timevault.directive 'pomodoroTimer', ['$interval', ($interval) ->
+@timevault.directive 'pomodoroTimer', ['$interval', 'Pomodoro', ($interval, Pomodoro) ->
   link = (scope, element, attrs) ->
+    @pomodorosService = new Pomodoro
     updateTime = ->
-      element.text scope.timeLeft()
+      element.text @pomodorosService.minutesLeft(scope.pomodoro)
     element.on '$destroy', ->
       $interval.cancel(timeoutId)
     timeoutId = $interval ->
