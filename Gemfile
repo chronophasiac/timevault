@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -37,6 +37,8 @@ gem 'twilio-ruby'
 gem 'devise'
 
 gem 'foreigner'
+
+gem 'spring', group: :development
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
