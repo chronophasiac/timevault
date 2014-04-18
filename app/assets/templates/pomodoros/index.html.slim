@@ -4,6 +4,7 @@ div(ng-init='init()')
       a(ng-click='viewPomodoro(pomodoro.id)')
         ' {{ pomodoro.start | date:'medium' }} to {{ pomodoro.end | date:'medium' }} duration {{ pomodoro.set_duration }}
       span(pomodoro-timer='')
+      progressbar(value='pomodoro.ps' type='success')
   form(role='form' ng-submit='addPomodoro()')
     div.form-group
       label(for='pomodoroDuration') Duration

@@ -17,14 +17,19 @@
     find: (id) ->
       @service.get id: id
 
-    minutesLeft: (pomodoro) ->
+    remainingSeconds: (pomodoro) ->
       pomodoroStart = new Date(pomodoro.start)
       endSeconds = pomodoroStart.getSeconds() + pomodoro.set_duration
       pomodoroEnd = pomodoroStart.setSeconds(endSeconds)
       now = new Date()
       remaining = pomodoroEnd - now
-      
       if remaining > 0
-        (remaining / 1000) / 60
+        remaining / 1000
       else
         0
+
+    minutesLeft: (pomodoro) ->
+      this.remainingSeconds(pomodoro) / 60
+      
+    percentageLeft: (pomodoro) ->
+      Math.floor (this.remainingSeconds(pomodoro) / pomodoro.set_duration) * 100
