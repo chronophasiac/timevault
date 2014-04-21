@@ -1,4 +1,4 @@
-@timevault.controller 'PomodoroIndexCtrl', ['$scope', '$location', '$http', '$filter', 'Pomodoro', ($scope, $location, $http, $filter, Pomodoro) ->
+@timevault.controller 'PomodoroIndexCtrl', ['$scope', '$location', '$filter', '$interval',  'Pomodoro', ($scope, $location, $filter, $interval, Pomodoro) ->
   $scope.pomodoros = []
 
   $scope.init = ->
@@ -9,14 +9,13 @@
     now = $filter('date')(Date.now(), "yyyy-MM-dd'T'HH:mm:ss")
     $scope.pomodoro = {start: now, set_duration: 1500}
 
+    timeoutId = $interval ->
+      $scope.updateRemaining()
+    , 1000
 
-    setInterval blah, 1000
-
-  blah = ->
-    $scope.$apply(
-                  for pom in $scope.pomodoros
-                    pom.ps = @pomodorosService.percentageLeft(pom)
-                  )
+  $scope.updateRemaining = ->
+    for pom in $scope.pomodoros
+      pom.percentageLeft = @pomodorosService.percentageLeft(pom)
 
   $scope.viewPomodoro = (id) ->
     $location.url "/pomodoros/#{id}"
