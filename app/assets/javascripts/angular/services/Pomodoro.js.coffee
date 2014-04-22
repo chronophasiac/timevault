@@ -28,8 +28,21 @@
       else
         0
 
+    remainingTime: (pomodoro) ->
+      date = new Date(null)
+      date.setSeconds @remainingSeconds(pomodoro)
+      utc = date.toUTCString()
+      utc.substr(utc.indexOf(':') - 2, 8)
+
     minutesLeft: (pomodoro) ->
-      this.remainingSeconds(pomodoro) / 60
+      @remainingSeconds(pomodoro) / 60
       
     percentageLeft: (pomodoro) ->
-      Math.floor (this.remainingSeconds(pomodoro) / pomodoro.set_duration) * 100
+      Math.floor (@remainingSeconds(pomodoro) / pomodoro.set_duration) * 100
+
+    progressBarType: (pomodoro) ->
+      percent = pomodoro.percentageLeft
+      switch 
+        when percent <= 10 then 'danger'
+        when percent <= 30 then 'warning'
+        else 'success'

@@ -14,8 +14,10 @@
     , 1000
 
   $scope.updateRemaining = ->
-    for pom in $scope.pomodoros
-      pom.percentageLeft = @pomodorosService.percentageLeft(pom)
+    for pomodoro in $scope.pomodoros
+      pomodoro.percentageLeft = @pomodorosService.percentageLeft(pomodoro)
+      pomodoro.remainingTime = @pomodorosService.remainingTime(pomodoro)
+      pomodoro.progressBarType = @pomodorosService.progressBarType(pomodoro)
 
   $scope.viewPomodoro = (id) ->
     $location.url "/pomodoros/#{id}"
