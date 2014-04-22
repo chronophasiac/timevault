@@ -2,9 +2,15 @@ class Pomodoro < ActiveRecord::Base
   belongs_to :user,
              inverse_of: :pomodoros
 
+  enum activity: {
+    work: 0,
+    break: 1
+  }
+
+  validates :user, presence: true
   validates :start, presence: true
   validates :set_duration, presence: true, numericality: { greater_than_or_equal_to: 10 }
-  validates :user, presence: true
+  validates :activity, presence: true
 
   def schedule_end
     PomodoroEndWorker.perform_in(set_duration.seconds.from_now, id)

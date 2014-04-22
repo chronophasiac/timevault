@@ -9,6 +9,7 @@
       new @service(pomodoro: attrs).$save (pomodoro) ->
         attrs.id = pomodoro.id
         attrs.start = pomodoro.start
+        attrs.activity = pomodoro.activity
       attrs
 
     all: ->

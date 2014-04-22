@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324004859) do
+ActiveRecord::Schema.define(version: 20140422224258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "pomodoros", force: true do |t|
-    t.datetime "start",        null: false
+    t.datetime "start",                    null: false
     t.datetime "end"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "set_duration", null: false
-    t.integer  "user_id",      null: false
+    t.integer  "set_duration",             null: false
+    t.integer  "user_id",                  null: false
+    t.integer  "activity",     default: 0, null: false
   end
 
   add_index "pomodoros", ["user_id"], name: "index_pomodoros_on_user_id", using: :btree

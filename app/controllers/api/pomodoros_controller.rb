@@ -21,6 +21,6 @@ class API::PomodorosController < API::BaseController
   private
 
   def pomodoro_params
-    params.require(:pomodoro).permit(:set_duration)
+    params.require(:pomodoro).permit(:set_duration, :activity)
   end
 end
