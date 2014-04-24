@@ -43,7 +43,7 @@
 
     progressBarType: (pomodoro) ->
       percent = pomodoro.percentageLeft
-      switch 
+      switch
         when percent <= 10 then 'danger'
         when percent <= 30 then 'warning'
         else 'success'
