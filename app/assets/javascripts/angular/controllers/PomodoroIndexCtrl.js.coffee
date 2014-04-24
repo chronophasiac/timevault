@@ -4,7 +4,6 @@
   $scope.init = ->
     @pomodorosService = new Pomodoro
     $scope.pomodoros = @pomodorosService.all()
-    $scope.ps = @pomodorosService
 
     now = $filter('date')(Date.now(), "yyyy-MM-dd'T'HH:mm:ss")
     $scope.pomodoro = {start: now, set_duration: 1500}
