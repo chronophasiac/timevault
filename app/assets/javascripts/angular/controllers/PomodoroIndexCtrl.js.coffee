@@ -23,10 +23,15 @@
     $scope.viewPomodoro = (id) ->
       $location.url "/pomodoros/#{id}"
 
-    $scope.addPomodoro = ->
+    $scope.addWorkPeriod = ->
       pomodoro = @pomodorosService.create
-        start: $scope.pomodoro.start,
-        set_duration: $scope.pomodoro.set_duration,
-        activity: $scope.pomodoro.activity
+        set_duration: 1500
+        activity: 'work'
+      $scope.pomodoros.unshift(pomodoro)
+
+    $scope.addBreakPeriod = ->
+      pomodoro = @pomodorosService.create
+        set_duration: 300
+        activity: 'break'
       $scope.pomodoros.unshift(pomodoro)
 ]

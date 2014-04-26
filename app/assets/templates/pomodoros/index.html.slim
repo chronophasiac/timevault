@@ -1,5 +1,7 @@
 div(ng-init='init()')
-  ul(ng-repeat='pomodoro in pomodoros | orderBy: "start"')
+  button.btn.btn-primary(ng-click='addWorkPeriod()') Work
+  button.btn.btn-default(ng-click='addBreakPeriod()') Break
+  ul(ng-repeat='pomodoro in pomodoros | orderBy:"start":true')
     li
       h4
         a(ng-click='viewPomodoro(pomodoro.id)')
@@ -7,10 +9,3 @@ div(ng-init='init()')
       progressbar(value='pomodoro.percentageLeft' type='{{pomodoro.progressBarType}}')
         span
           ' {{pomodoro.remainingTime}}
-  form(role='form' ng-submit='addPomodoro()')
-    div.form-group
-      label(for='pomodoroDuration') Duration
-      input#pomodoroDuration(type='number' step='1' class='form-control' ng-model='pomodoro.set_duration' data-non-blank)
-      label(for='pomodoroActivity') Activity
-      input#pomodoroActivity(class='form-control' ng-model='pomodoro.activity' data-non-blank)
-    button.btn.btn-default(type='submit') Add
