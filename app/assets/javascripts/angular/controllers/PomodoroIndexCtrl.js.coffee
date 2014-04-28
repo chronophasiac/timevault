@@ -7,9 +7,6 @@
       @pomodorosService = new Pomodoro
       $scope.pomodoros = @pomodorosService.all()
 
-      now = $filter('date')(Date.now(), "yyyy-MM-dd'T'HH:mm:ss")
-      $scope.pomodoro = {start: now, set_duration: 1500}
-
       timeoutId = $interval ->
         $scope.updateRemaining()
       , 1000
@@ -19,6 +16,10 @@
         pomodoro.percentageLeft = @pomodorosService.percentageLeft(pomodoro)
         pomodoro.remainingTime = @pomodorosService.remainingTime(pomodoro)
         pomodoro.progressBarType = @pomodorosService.progressBarType(pomodoro)
+
+    $scope.runningPomodoro = ->
+      for pomodoro in $scope.pomodoros
+        return pomodoro if pomodoro.percentageLeft > 0
 
     $scope.viewPomodoro = (id) ->
       $location.url "/pomodoros/#{id}"

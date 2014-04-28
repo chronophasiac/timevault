@@ -1,6 +1,7 @@
 div(ng-init='init()')
-  button.btn.btn-primary(ng-click='addWorkPeriod()') Work
-  button.btn.btn-default(ng-click='addBreakPeriod()') Break
+  div(ng-hide='runningPomodoro()')
+    button.btn.btn-primary(ng-click='addWorkPeriod()') Work
+    button.btn.btn-default(ng-click='addBreakPeriod()') Break
   ul(ng-repeat='pomodoro in pomodoros | orderBy:"start":true')
     li
       h4
