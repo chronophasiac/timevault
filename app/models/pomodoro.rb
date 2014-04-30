@@ -1,4 +1,5 @@
 class Pomodoro < ActiveRecord::Base
+
   belongs_to :user,
              inverse_of: :pomodoros
 
@@ -7,14 +8,14 @@ class Pomodoro < ActiveRecord::Base
     break: 1
   }
 
+  before_destroy :delete_queued_job!
+
+  QUEUE = Sidekiq::ScheduledSet.new
+
   validates :user, presence: true
   validates :start, presence: true
   validates :set_duration, presence: true, numericality: { greater_than_or_equal_to: 10 }
   validates :activity, presence: true
-
-  def schedule_end
-    PomodoroEndWorker.perform_in(set_duration.seconds.from_now, id)
-  end
 
   def add_end
     if self.update(end: DateTime.now)
@@ -25,4 +26,17 @@ class Pomodoro < ActiveRecord::Base
       self.destroy
     end
   end
+
+  def delete_queued_job!
+    if job_id.present?
+      queue.each { |job| job.delete if job.jid == job_id }
+    end
+  end
+
+  private
+
+  def queue
+    QUEUE
+  end
+
 end

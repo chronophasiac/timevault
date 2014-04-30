@@ -1,4 +1,5 @@
 class API::PomodorosController < API::BaseController
+
   def index
     @pomodoros = current_user.pomodoros
   end
@@ -8,13 +9,11 @@ class API::PomodorosController < API::BaseController
   end
 
   def create
-    @pomodoro = current_user.pomodoros.build(pomodoro_params)
-    @pomodoro.start = DateTime.now
+    @pomodoro = PomodoroFactory.new(current_user, pomodoro_params)
     if @pomodoro.save
-      @pomodoro.schedule_end
-      render json: @pomodoro, status: :created
+      render json: @pomodoro.model, status: :created
     else
-      render json: @pomodoro.errors, status: :unprocessable_entity
+      render json: @pomodoro.model.errors, status: :unprocessable_entity
     end
   end
 
@@ -23,4 +22,5 @@ class API::PomodorosController < API::BaseController
   def pomodoro_params
     params.require(:pomodoro).permit(:set_duration, :activity)
   end
+
 end

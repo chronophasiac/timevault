@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422224258) do
+ActiveRecord::Schema.define(version: 20140428003726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140422224258) do
     t.integer  "set_duration",             null: false
     t.integer  "user_id",                  null: false
     t.integer  "activity",     default: 0, null: false
+    t.string   "job_id"
   end
 
   add_index "pomodoros", ["user_id"], name: "index_pomodoros_on_user_id", using: :btree
