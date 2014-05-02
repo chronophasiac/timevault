@@ -17,20 +17,8 @@ class Pomodoro < ActiveRecord::Base
   validates :set_duration, presence: true, numericality: { greater_than_or_equal_to: 10 }
   validates :activity, presence: true
 
-  def add_end
-    if self.update(end: DateTime.now)
-      notifier = PomodoroNotifier.new(self)
-      notifier.send_notification!
-    else
-      # Something has gone seriously wrong, just destroy the invalid pomodoro
-      self.destroy
-    end
-  end
-
   def delete_queued_job!
-    if job_id.present?
-      queue.each { |job| job.delete if job.jid == job_id }
-    end
+    queue.each { |job| job.delete if job.jid == job_id }
   end
 
   private

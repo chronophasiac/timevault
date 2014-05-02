@@ -3,6 +3,7 @@ class PomodoroEndWorker
 
   def perform(id)
     pomodoro = Pomodoro.find(id)
-    pomodoro.add_end if pomodoro.present?
+    notifier = PomodoroNotifier.new(pomodoro)
+    notifier.send_notification!
   end
 end
