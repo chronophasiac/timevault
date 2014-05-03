@@ -17,6 +17,12 @@ class API::PomodorosController < API::BaseController
     end
   end
 
+  def destroy
+    @pomodoro = current_user.pomodoros.find(params[:id])
+    @pomodoro.destroy
+    head :no_content
+  end
+
   private
 
   def pomodoro_params

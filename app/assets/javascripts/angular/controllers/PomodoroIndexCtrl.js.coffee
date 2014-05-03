@@ -24,6 +24,11 @@
     $scope.viewPomodoro = (id) ->
       $location.url "/pomodoros/#{id}"
 
+    $scope.destroyPomodoro = (id) ->
+      @pomodorosService.destroy id
+      $scope.pomodoros = $scope.pomodoros.filter (pomodoro) ->
+        pomodoro.id isnt id
+
     $scope.addWorkPeriod = ->
       pomodoro = @pomodorosService.create
         set_duration: 1500

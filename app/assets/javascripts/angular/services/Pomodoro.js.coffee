@@ -18,6 +18,9 @@
     find: (id) ->
       @service.get id: id
 
+    destroy: (id) ->
+      @service.delete id: id
+
     remainingSeconds: (pomodoro) ->
       pomodoroStart = new Date(pomodoro.start)
       endSeconds = pomodoroStart.getSeconds() + pomodoro.set_duration
