@@ -1,4 +1,5 @@
 class PomodoroNotifier
+
   def initialize(pomodoro)
     @pomodoro = pomodoro
   end
@@ -19,4 +20,5 @@ class PomodoroNotifier
       @pomodoro.destroy
     end
   end
+  
 end
