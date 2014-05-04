@@ -7,7 +7,10 @@ Timevault::Application.routes.draw do
     resources :pomodoros
   end
 
-  mount Sidekiq::Web => '/sidekiq'
+  authenticate :user, lambda { |user| user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   root "static_pages#index"
 
   get '/pomodoros' => 'static_pages#index'
