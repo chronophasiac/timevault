@@ -12,5 +12,5 @@ div(ng-init='init()')
             span
               ' {{pomodoro.remainingTime}}
         .col-md-1
-          a(ng-click='destroyPomodoro(pomodoro.id)')
+          a.btn.btn-danger(ng-click='destroyPomodoro(pomodoro.id)')
             span.glyphicon.glyphicon-remove
