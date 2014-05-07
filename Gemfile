@@ -38,6 +38,8 @@ gem 'devise'
 
 gem 'foreigner'
 
+gem 'unicorn'
+
 gem 'spring', group: :development
 
 group :development, :test do
@@ -45,6 +47,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-remote'
 end
+
+gem 'rails_12factor', group: :production
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

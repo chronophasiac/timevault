@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: timevault_production
-  username: timevault
-  password: <%= ENV['TIMEVAULT_DATABASE_PASSWORD'] %>
