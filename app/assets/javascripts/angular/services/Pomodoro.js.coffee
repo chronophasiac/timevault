@@ -1,4 +1,4 @@
-@timevault.factory 'Pomodoro', ($resource) ->
+@timevault.factory 'Pomodoro', ['$resource', ($resource) ->
   class Pomodoro
     constructor: ->
       @service = $resource('/api/pomodoros/:id',
@@ -50,3 +50,4 @@
         when percent <= 10 then 'danger'
         when percent <= 30 then 'warning'
         else 'success'
+]
